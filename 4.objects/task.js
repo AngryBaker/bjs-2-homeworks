@@ -12,11 +12,9 @@ Student.prototype.setSubject = function (subjectName) {
 }
 
 Student.prototype.addMarks = function (...marks) {
-  if ("marks" in this === false) {
-    return;
-  } else {
-        this.marks.push(...marks);
-     }
+  if ("marks" in this ) {
+    this.marks.push(...marks);
+  } 
   
 }
 
