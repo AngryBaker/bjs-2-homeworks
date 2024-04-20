@@ -78,3 +78,41 @@ class Library {
     }
   }
 }
+
+
+class Student {
+  constructor(name) {
+    this.name = name;
+    this.marks = {};
+  }
+
+  addMark (mark, subject) {
+    if (mark < 2 || mark > 5) {
+      return;
+    } else if (!(subject in this.marks)) {
+        this.marks[subject] = [mark];   
+    } else {
+        this.marks[subject].push(mark);
+    }
+    }
+
+    getAverageBySubject(subject) {
+        if (!(subject in this.marks)) {
+            return 0;   
+        } else {
+            return this.marks[subject].reduce((acc, element) => acc + element) / this.marks[subject].length;
+        }
+    }
+
+    getAverage() {
+        let subjectsArr = Object.keys(this.marks);
+        console.log(subjectsArr);
+        if (subjectsArr.length === 0) {
+            return 0;
+        } else {
+            return subjectsArr.reduce((acc, subjectName) => acc + this.getAverageBySubject(subjectName), 0 ) / subjectsArr.length ;
+            
+        } 
+    }
+  }
+    
